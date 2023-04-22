@@ -15,7 +15,7 @@ import {
   NbButtonModule,
   NbProgressBarModule,
   NbSpinnerModule,
-  NbAutocompleteModule, NbListModule, NbAccordionModule, NbPopoverModule
+  NbAutocompleteModule, NbListModule, NbAccordionModule, NbPopoverModule, NbDialogModule, NbToastrModule
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,13 +24,15 @@ import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { ResultPageComponent } from './result-page/result-page.component';
 import { RecursiveDisplayComponent } from './recursive-display/recursive-display.component';
+import { AlertSubscribeComponent } from './alert-subscribe/alert-subscribe.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchPageComponent,
     ResultPageComponent,
-    RecursiveDisplayComponent
+    RecursiveDisplayComponent,
+    AlertSubscribeComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,10 @@ import { RecursiveDisplayComponent } from './recursive-display/recursive-display
     NbAutocompleteModule,
     NbListModule,
     NbAccordionModule,
-    NbPopoverModule
+    NbPopoverModule,
+    NbButtonModule,
+    NbDialogModule.forRoot(),
+    NbToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,10 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {CompassAPIService} from "../services/compassapi/compass-api.service";
-import {NbThemeService} from "@nebular/theme";
+import {NbDialogService, NbThemeService} from "@nebular/theme";
+import {AlertSubscribeComponent} from "./alert-subscribe/alert-subscribe.component";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class AppComponent implements OnInit{
@@ -15,7 +17,8 @@ export class AppComponent implements OnInit{
   data: any;
   isLoading: any;
   constructor( private compassAPIService : CompassAPIService,
-               private themeService: NbThemeService) { }
+               private themeService: NbThemeService,
+               private dialogService: NbDialogService) { }
   ngOnInit() {
 
   }
@@ -37,10 +40,9 @@ export class AppComponent implements OnInit{
     this.isDarkTheme = !this.isDarkTheme;
     const theme = this.isDarkTheme ? 'dark' : 'default';
     this.themeService.changeTheme(theme);
-
   }
 
-  openDialog() {
-
+  openSubscribeDialog() {
+    this.dialogService.open(AlertSubscribeComponent);
   }
 }

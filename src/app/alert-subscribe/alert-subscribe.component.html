@@ -1,0 +1,26 @@
+<nb-card>
+  <nb-card-header></nb-card-header>
+  <nb-card-body>
+    <form>
+      <label>The search term.</label>
+      <input nbInput type="text" [(ngModel)]="term" [ngModelOptions]="{ standalone: true }">
+
+      <label>The communication channel for alerts (currently only Telegram).</label>
+      <input nbInput type="text" [(ngModel)]="channel" [ngModelOptions]="{ standalone: true }">
+
+      <label>The contact information for the channel (the Telegram chat id).</label>
+      <input nbInput type="text" [(ngModel)]="contact" [ngModelOptions]="{ standalone: true }">
+
+      <label>The minimum score for an alert to be triggered.</label>
+      <input nbInput type="number" [(ngModel)]="scoregt" [ngModelOptions]="{ standalone: true }">
+
+      <label>The maximum score for an alert to be triggered.</label>
+      <input nbInput type="number" [(ngModel)]="scorelt" [ngModelOptions]="{ standalone: true }">
+
+    </form>
+  </nb-card-body>
+  <nb-card-footer>
+    <button nbButton status="primary" (click)="submit()">Submit</button>
+    <button nbButton (click)="cancel()">Cancel</button>
+  </nb-card-footer>
+</nb-card>
