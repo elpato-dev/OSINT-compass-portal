@@ -1,7 +1,10 @@
 .result-container {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: fit-content;
 }
 .result-panel {
-  width: 30%;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 280px;
 }
