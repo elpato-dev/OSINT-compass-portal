@@ -1,0 +1,24 @@
+<nb-layout-column class="centered-columns-container">
+  <h2>
+    Time to unveil the hidden and master the web.
+  </h2>
+
+  <nb-card-body class="search-container">
+    <nb-form-field>
+      <nb-icon nbPrefix icon="search-outline"></nb-icon>
+      <input nbInput placeholder="Search..." type="text" [(ngModel)]="searchQuery">
+    </nb-form-field>
+    <button nbButton class="margin-small">Go</button>
+  </nb-card-body>
+
+  <nb-card-body class="category-bubbles-container">
+    <nb-button-group size="small" fullWidth>
+      <button *ngFor="let category of categories" nbButton
+              (click)="selectCategory(category)"
+              [status]="category === selectedCategory ? 'success' : 'basic'"
+      >
+        {{ category }}
+      </button>
+    </nb-button-group>
+  </nb-card-body>
+</nb-layout-column>
