@@ -15,7 +15,7 @@ import {
   NbButtonModule,
   NbProgressBarModule,
   NbSpinnerModule,
-  NbAutocompleteModule
+  NbAutocompleteModule, NbListModule, NbAccordionModule, NbPopoverModule
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { AppRoutingModule } from './app-routing.module';
@@ -50,7 +50,10 @@ import { RecursiveDisplayComponent } from './recursive-display/recursive-display
     HttpClientModule,
     NbProgressBarModule,
     NbSpinnerModule,
-    NbAutocompleteModule
+    NbAutocompleteModule,
+    NbListModule,
+    NbAccordionModule,
+    NbPopoverModule
   ],
   providers: [],
   bootstrap: [AppComponent]

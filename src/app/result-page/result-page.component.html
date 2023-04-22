@@ -1,5 +1,27 @@
 <!------   Term     ------->
-
+<div *ngIf="data && data.news && data.news.articles" class="result-container">
+  <nb-accordion>
+    <nb-accordion-item>
+      <nb-accordion-item-header>Word frequency</nb-accordion-item-header>
+      <nb-accordion-item-body>
+        <table>
+          <thead>
+          <tr>
+            <th>Word</th>
+            <th>Count</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let word of data.common_words">
+            <td>{{ word[0] }}</td>
+            <td>{{ word[1] }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </nb-accordion-item-body>
+    </nb-accordion-item>
+  </nb-accordion>
+</div>
 <div *ngIf="data && data.news && data.news.articles" class="result-container">
   <nb-card class="result-panel">
     <nb-card-header>

@@ -18,7 +18,10 @@
       </nb-autocomplete>
 
     </nb-form-field>
-    <button nbButton class="margin-small" (click)="onSearchClick()">Go</button>
+    <button nbButton class="margin-small" (click)="onSearchClick()" [nbPopover]="templateRef">Go</button>
+    <ng-template #templateRef>
+      <span *ngIf="selectedCategory == undefined">Select a category first!</span>
+    </ng-template>
   </nb-card-body>
 
   <nb-card-body class="category-bubbles-container">

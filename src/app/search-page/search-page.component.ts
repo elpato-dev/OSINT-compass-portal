@@ -18,7 +18,7 @@ export class SearchPageComponent implements OnInit {
 
   searchTerms = new Subject<string>();
 
-  selectedCategory : any;
+  selectedCategory : any = undefined;
   categories: string[] = [
     "Term",
     "E-Mail",
@@ -42,14 +42,17 @@ export class SearchPageComponent implements OnInit {
       });
   }
   ngOnInit() {
-    const firstCategory = Object.keys(this.categories)[0];
-    this.selectCategory(firstCategory);
+
   }
   selectCategory(category: any): void {
     this.selectedCategory = category;
     console.log('Selected Category:', this.selectedCategory);
   }
   onSearchClick() {
+    if(this.selectedCategory == undefined) {
+      return;
+    }
+
     console.warn(this.selectedCategory);
     let endpoint = "";
       switch (this.selectedCategory) {
@@ -64,4 +67,6 @@ export class SearchPageComponent implements OnInit {
     const query = target.value;
     this.searchTerms.next(query);
   }
+
+  protected readonly undefined = undefined;
 }
