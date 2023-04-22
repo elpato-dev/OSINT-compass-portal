@@ -9,7 +9,7 @@
       <nb-layout-column>
         <nb-card>
           <nb-card-body>
-            <app-search-page (startSearch)="onSearchStart($event)"></app-search-page>
+            <app-search-page (startSearch)="onSearchStart($event)" [nbSpinner]="isLoading" nbSpinnerStatus="danger"></app-search-page>
           </nb-card-body>
           <nb-card-body>
             <app-result-page [data]="data"></app-result-page>

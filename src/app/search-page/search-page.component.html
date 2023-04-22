@@ -6,7 +6,17 @@
   <nb-card-body class="search-container">
     <nb-form-field>
       <nb-icon nbPrefix icon="search-outline"></nb-icon>
-      <input nbInput placeholder="Search..." type="text" [(ngModel)]="searchQuery">
+      <input nbInput placeholder="Search..." type="text"
+             (input)="onInput($event)"
+             [(ngModel)]="searchQuery"
+             [nbAutocomplete]="auto"
+      />
+      <nb-autocomplete #auto [activeFirst]="true">
+        <nb-option *ngFor="let option of suggestions" [value]="option.displayText">
+          {{ option.displayText }}
+        </nb-option>
+      </nb-autocomplete>
+
     </nb-form-field>
     <button nbButton class="margin-small" (click)="onSearchClick()">Go</button>
   </nb-card-body>

@@ -9,6 +9,7 @@ import {CompassAPIService} from "../services/compassapi/compass-api.service";
 export class AppComponent implements OnInit{
   title = 'OSINT-compass-portal-angular';
   data: any;
+  isLoading: any;
   constructor( private compassAPIService : CompassAPIService) { }
 
   ngOnInit() {
@@ -16,10 +17,12 @@ export class AppComponent implements OnInit{
   }
 
   onSearchStart(event: { term: string, endpoint: string }) {
+    this.isLoading = true;
     this.compassAPIService.getEndpointData(event.term, event.endpoint).subscribe({
       next: data => {
         this.data=data;
         console.log('Endpoint data:', data);
+        this.isLoading = false;
         },
       error: error => console.error('Error fetching Endpoint data:', error),
       complete: () => console.log('Endpoint data fetching completed')

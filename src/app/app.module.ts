@@ -9,7 +9,13 @@ import {
   NbInputModule,
   NbCardModule,
   NbFormFieldModule,
-  NbIconModule, NbTabsetModule, NbButtonGroupModule, NbButtonModule
+  NbIconModule,
+  NbTabsetModule,
+  NbButtonGroupModule,
+  NbButtonModule,
+  NbProgressBarModule,
+  NbSpinnerModule,
+  NbAutocompleteModule
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { AppRoutingModule } from './app-routing.module';
@@ -41,7 +47,10 @@ import { RecursiveDisplayComponent } from './recursive-display/recursive-display
     NbButtonGroupModule,
     FormsModule,
     NbButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    NbProgressBarModule,
+    NbSpinnerModule,
+    NbAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]
