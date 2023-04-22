@@ -8,4 +8,5 @@ import {Component, Input} from '@angular/core';
 export class ResultPageComponent {
   @Input() data: any;
 
+  protected readonly Object = Object;
 }

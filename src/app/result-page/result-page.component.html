@@ -38,8 +38,8 @@
     </nb-card-header>
     <nb-card-body>
       <ng-container *ngIf="data.wikipedia">
-        <nb-card *ngFor="let entry of data.wikipedia">
-          <nb-card-header>{{ entry }}</nb-card-header>
+        <nb-card *ngFor="let entry of Object.keys(data.wikipedia)">
+          <nb-card-header>{{ entry }} T</nb-card-header>
           <nb-card-body>
             <a href="{{ data.wikipedia[entry] }}" target="_blank">{{ data.wikipedia[entry] }}</a>
           </nb-card-body>
