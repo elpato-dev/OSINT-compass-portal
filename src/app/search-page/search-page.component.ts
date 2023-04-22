@@ -9,20 +9,32 @@ import {AppComponent} from "../app.component";
 
 
 export class SearchPageComponent implements OnInit {
-  @Output() startSearch: EventEmitter<{ term: string, category: string }> = new EventEmitter<{ term: string, category: string }>();
+  @Output() startSearch: EventEmitter<{ term: string, endpoint: string }> = new EventEmitter<{ term: string, endpoint: string }>();
 
   searchQuery = '';
-  selectedCategory = '';
-  categories =  ['Term', 'E-Mail', 'Domain'];
+  selectedCategory : any;
+  categories: string[] = [
+    "Term",
+    "E-Mail",
+    "Domain"
+  ];
 
   ngOnInit() {
-    this.selectCategory('');
+    const firstCategory = Object.keys(this.categories)[0];
+    this.selectCategory(firstCategory);
   }
-  selectCategory(category: string): void {
-    console.log('Selected Category:', category);
+  selectCategory(category: any): void {
     this.selectedCategory = category;
+    console.log('Selected Category:', this.selectedCategory);
   }
   onSearchClick() {
-    this.startSearch.emit({term: this.searchQuery, category: this.selectedCategory });
+    console.warn(this.selectedCategory);
+    let endpoint = "";
+      switch (this.selectedCategory) {
+        case "Term" : endpoint = "term"; break;
+        case "E-Mail" : endpoint = "email"; break;
+        case "Domain" : endpoint = "domain"; break;
+      }
+    this.startSearch.emit({term: this.searchQuery, endpoint:  endpoint});
   }
 }

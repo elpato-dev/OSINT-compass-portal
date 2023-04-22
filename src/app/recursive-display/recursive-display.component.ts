@@ -1,14 +1,12 @@
-import {Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-result-page',
-  templateUrl: './result-page.component.html',
-  styleUrls: ['./result-page.component.scss']
+  selector: 'app-recursive-display',
+  templateUrl: './recursive-display.component.html',
+  styleUrls: ['./recursive-display.component.scss']
 })
-export class ResultPageComponent {
+export class RecursiveDisplayComponent {
   @Input() data: any;
-
-  protected readonly Object = Object;
 
   isArray(value: any): boolean {
     return Array.isArray(value);
@@ -21,5 +19,4 @@ export class ResultPageComponent {
   getKeys(value: any): string[] {
     return Object.keys(value);
   }
-
 }

@@ -17,12 +17,14 @@ import { SearchPageComponent } from './search-page/search-page.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { ResultPageComponent } from './result-page/result-page.component';
+import { RecursiveDisplayComponent } from './recursive-display/recursive-display.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchPageComponent,
-    ResultPageComponent
+    ResultPageComponent,
+    RecursiveDisplayComponent
   ],
   imports: [
     BrowserModule,

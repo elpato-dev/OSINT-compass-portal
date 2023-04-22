@@ -1,3 +1,5 @@
+<!------   Term     ------->
+
 <div *ngIf="data && data.news && data.news.articles" class="result-container">
   <nb-card class="result-panel">
     <nb-card-header>
@@ -39,7 +41,7 @@
     <nb-card-body>
       <ng-container *ngIf="data.wikipedia">
         <nb-card *ngFor="let entry of Object.keys(data.wikipedia)">
-          <nb-card-header>{{ entry }} T</nb-card-header>
+          <nb-card-header>{{ entry }}</nb-card-header>
           <nb-card-body>
             <a href="{{ data.wikipedia[entry] }}" target="_blank">{{ data.wikipedia[entry] }}</a>
           </nb-card-body>
@@ -48,6 +50,17 @@
 
     </nb-card-body>
   </nb-card>
+</div>
 
+<!------   E-Mail & Domain     ------->
 
+<div *ngIf="data && data.sources" class="result-container">
+  <nb-card *ngFor="let source of data.sources" class="result-panel">
+    <nb-card-header>
+      <h3>{{ source.title }}</h3>
+    </nb-card-header>
+    <nb-card-body>
+      <app-recursive-display [data]="source.content"></app-recursive-display>
+    </nb-card-body>
+  </nb-card>
 </div>
