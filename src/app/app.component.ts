@@ -40,4 +40,7 @@ export class AppComponent implements OnInit{
 
   }
 
+  openDialog() {
+
+  }
 }
