@@ -10,7 +10,7 @@ import {AlertSubscribeComponent} from "./alert-subscribe/alert-subscribe.compone
 })
 
 export class AppComponent implements OnInit{
-  title = 'OSINT-compass-portal-angular';
+  title = 'OSINT-Compass';
 
   isDarkTheme = false;
 
