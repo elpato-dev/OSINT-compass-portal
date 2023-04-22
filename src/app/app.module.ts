@@ -15,11 +15,14 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { AppRoutingModule } from './app-routing.module';
 import { SearchPageComponent } from './search-page/search-page.component';
 import {FormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import { ResultPageComponent } from './result-page/result-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchPageComponent
+    SearchPageComponent,
+    ResultPageComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import {FormsModule} from "@angular/forms";
     NbTabsetModule,
     NbButtonGroupModule,
     FormsModule,
-    NbButtonModule
+    NbButtonModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

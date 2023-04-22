@@ -1,0 +1,53 @@
+<div *ngIf="data && data.news && data.news.articles" class="result-container">
+  <nb-card class="result-panel">
+    <nb-card-header>
+      <h3>News:</h3>
+      <h4>Sentiment: {{data.news.sentiment}}</h4>
+    </nb-card-header>
+    <nb-card-body>
+      <nb-card *ngFor="let article of data.news.articles">
+        <nb-card-header>
+          <a [href]="article.url" target="_blank">{{ article.title }}</a>
+        </nb-card-header>
+        <nb-card-body>
+          <p>{{ article.content }}</p>
+          <p><b>Source:</b> {{ article.source }}</p>
+        </nb-card-body>
+      </nb-card>
+    </nb-card-body>
+  </nb-card>
+  <nb-card class="result-panel">
+    <nb-card-header>
+      <h3>Tweets:</h3>
+      <h4>Sentiment: {{data.tweets.sentiment}}</h4>
+    </nb-card-header>
+    <nb-card-body>
+      <nb-card *ngFor="let tweet of data.tweets.tweets_text">
+        <nb-card-header>
+          <a [href]="" target="_blank"></a>
+        </nb-card-header>
+        <nb-card-body>
+          <p>{{ tweet }}</p>
+        </nb-card-body>
+      </nb-card>
+    </nb-card-body>
+  </nb-card>
+  <nb-card class="result-panel">
+    <nb-card-header>
+      <h3>Wikipedia:</h3>
+    </nb-card-header>
+    <nb-card-body>
+      <ng-container *ngIf="data.wikipedia">
+        <nb-card *ngFor="let entry of data.wikipedia">
+          <nb-card-header>{{ entry }}</nb-card-header>
+          <nb-card-body>
+            <a href="{{ data.wikipedia[entry] }}" target="_blank">{{ data.wikipedia[entry] }}</a>
+          </nb-card-body>
+        </nb-card>
+      </ng-container>
+
+    </nb-card-body>
+  </nb-card>
+
+
+</div>

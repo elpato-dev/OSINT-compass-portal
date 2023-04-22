@@ -1,14 +1,19 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {AppComponent} from "../app.component";
 
 @Component({
   selector: 'app-search-page',
   templateUrl: './search-page.component.html',
   styleUrls: ['./search-page.component.scss']
 })
+
+
 export class SearchPageComponent implements OnInit {
+  @Output() startSearch: EventEmitter<{ term: string, category: string }> = new EventEmitter<{ term: string, category: string }>();
+
   searchQuery = '';
-  categories =  ['Term', 'E-Mail', 'Domain'];
   selectedCategory = '';
+  categories =  ['Term', 'E-Mail', 'Domain'];
 
   ngOnInit() {
     this.selectCategory('');
@@ -16,5 +21,8 @@ export class SearchPageComponent implements OnInit {
   selectCategory(category: string): void {
     console.log('Selected Category:', category);
     this.selectedCategory = category;
+  }
+  onSearchClick() {
+    this.startSearch.emit({term: this.searchQuery, category: this.selectedCategory });
   }
 }

@@ -8,7 +8,7 @@
       <nb-icon nbPrefix icon="search-outline"></nb-icon>
       <input nbInput placeholder="Search..." type="text" [(ngModel)]="searchQuery">
     </nb-form-field>
-    <button nbButton class="margin-small">Go</button>
+    <button nbButton class="margin-small" (click)="onSearchClick()">Go</button>
   </nb-card-body>
 
   <nb-card-body class="category-bubbles-container">
