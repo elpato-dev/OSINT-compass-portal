@@ -12,11 +12,10 @@
       <input nbInput placeholder="1234567890" type="text" [(ngModel)]="contact" [ngModelOptions]="{ standalone: true }">
 
       <label nbTooltip="Enter the value at which an alert should be triggered when a number is smaller than that value." nbTooltipPlacement="top" nbButton status="basic">Sentiment Score less than: (optional)</label>
-      <input nbInput type="number" [(ngModel)]="scoregt" [ngModelOptions]="{ standalone: true }">
-
-      <label nbTooltip="Enter the value at which an alert should be triggered when a number is greater than that value." nbTooltipPlacement="top" nbButton status="basic">Sentiment Score greater than: (optional)</label>
       <input nbInput type="number" [(ngModel)]="scorelt" [ngModelOptions]="{ standalone: true }">
 
+      <label nbTooltip="Enter the value at which an alert should be triggered when a number is greater than that value." nbTooltipPlacement="top" nbButton status="basic">Sentiment Score greater than: (optional)</label>
+      <input nbInput type="number" [(ngModel)]="scoregt" [ngModelOptions]="{ standalone: true }">
     </form>
   </nb-card-body>
   <nb-card-footer class="d-flex justify-content-between">
