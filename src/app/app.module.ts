@@ -15,7 +15,13 @@ import {
   NbButtonModule,
   NbProgressBarModule,
   NbSpinnerModule,
-  NbAutocompleteModule, NbListModule, NbAccordionModule, NbPopoverModule, NbDialogModule, NbToastrModule
+  NbAutocompleteModule,
+  NbListModule,
+  NbAccordionModule,
+  NbPopoverModule,
+  NbDialogModule,
+  NbToastrModule,
+  NbTooltipModule
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +31,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { ResultPageComponent } from './result-page/result-page.component';
 import { RecursiveDisplayComponent } from './recursive-display/recursive-display.component';
 import { AlertSubscribeComponent } from './alert-subscribe/alert-subscribe.component';
+import { ClickableUrlPipe } from '../pipes/clickableUrl/clickable-url.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +39,8 @@ import { AlertSubscribeComponent } from './alert-subscribe/alert-subscribe.compo
     SearchPageComponent,
     ResultPageComponent,
     RecursiveDisplayComponent,
-    AlertSubscribeComponent
+    AlertSubscribeComponent,
+    ClickableUrlPipe
   ],
   imports: [
     BrowserModule,
@@ -58,7 +66,8 @@ import { AlertSubscribeComponent } from './alert-subscribe/alert-subscribe.compo
     NbPopoverModule,
     NbButtonModule,
     NbDialogModule.forRoot(),
-    NbToastrModule.forRoot()
+    NbToastrModule.forRoot(),
+    NbTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

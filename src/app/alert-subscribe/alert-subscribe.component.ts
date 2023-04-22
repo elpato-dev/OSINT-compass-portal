@@ -10,25 +10,36 @@ import {CompassAPIService} from "../../services/compassapi/compass-api.service";
 })
 export class AlertSubscribeComponent {
   term: string = '';
-  channel: string = '';
+  channel: string = 'telegram';
   contact: string = '';
-  scoregt: number = -1;
-  scorelt: number = 1;
+  scoregt: undefined;
+  scorelt: undefined;
+
+  showRequiredMissing = false;
 
   constructor(private dialogRef: NbDialogRef<AlertSubscribeComponent>,
               private compassAPIService : CompassAPIService) { }
 
-  submit() {
+  requiredMissing(): boolean {
+    return (this.term == ''|| this.channel == '' || this.contact == '');
+  }
 
+  submit() {
+    if(this.requiredMissing()){
+      this.showRequiredMissing = true;
+      return;
+    }
     // Do something with the input values
     console.log(this.term, this.channel, this.contact, this.scoregt, this.scorelt);
     this.compassAPIService.registerAlert(this.term, this.channel, this.contact, this.scoregt, this.scorelt);
     // Close the dialog
+    this.showRequiredMissing = false;
     this.dialogRef.close();
   }
 
   cancel() {
     // Close the dialog
+    this.showRequiredMissing = false;
     this.dialogRef.close();
   }
 

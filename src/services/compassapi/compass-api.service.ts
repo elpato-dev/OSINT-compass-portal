@@ -20,7 +20,7 @@ export class CompassAPIService {
   @HostBinding('class')
   classes = 'example-items-rows';
 
-  registerAlert(term: String, channel: String, contact: String, scoregt: Number, scorelt: Number) {
+  registerAlert(term: String, channel: String, contact: String, scoregt: any, scorelt: any) {
     const url = baseURL + '/alert?apikey=' + apikey;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'

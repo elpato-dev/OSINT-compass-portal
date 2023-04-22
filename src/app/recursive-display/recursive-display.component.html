@@ -9,7 +9,7 @@
 <div *ngIf="isObject(data)">
   <table>
     <tr *ngFor="let key of getKeys(data)">
-      <td>{{ key }}:</td>
+      <td>{{ key | clickableUrl}}:</td>
       <td>
         <app-recursive-display [data]="data[key]"></app-recursive-display>
       </td>
@@ -17,6 +17,7 @@
   </table>
 </div>
 
-<div *ngIf="!isArray(data) && !isObject(data)">
-  {{ data }}
+<div *ngIf="!isArray(data) && !isObject(data)" [innerHTML]="data | clickableUrl">
+
 </div>
+

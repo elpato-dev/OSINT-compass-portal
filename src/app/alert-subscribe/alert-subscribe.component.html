@@ -2,25 +2,28 @@
   <nb-card-header></nb-card-header>
   <nb-card-body>
     <form>
-      <label>The search term.</label>
-      <input nbInput type="text" [(ngModel)]="term" [ngModelOptions]="{ standalone: true }">
+      <label nbTooltip="Enter the term that you wish to search for." nbTooltipPlacement="top" nbButton status="basic">Search Term:</label>
+      <input nbInput placeholder="Weather" type="text" [(ngModel)]="term" [ngModelOptions]="{ standalone: true }">
 
-      <label>The communication channel for alerts (currently only Telegram).</label>
-      <input nbInput type="text" [(ngModel)]="channel" [ngModelOptions]="{ standalone: true }">
+      <label nbTooltip="Enter the information for the communication channel that you wish to receive alerts on. Currently, only Telegram is supported." nbTooltipPlacement="top" nbButton status="basic">Alert Communication Channel:</label>
+      <input nbInput placeholder="telegram" disabled="true" type="text" [(ngModel)]="channel" [ngModelOptions]="{ standalone: true }">
 
-      <label>The contact information for the channel (the Telegram chat id).</label>
-      <input nbInput type="text" [(ngModel)]="contact" [ngModelOptions]="{ standalone: true }">
+      <label nbTooltip="Enter the chat ID that serves as the contact information for the communication channel." nbTooltipPlacement="top" nbButton status="basic">Channel Contact Information (<a href="https://www.alphr.com/find-chat-id-telegram/" target="_blank">Chat ID</a>):</label>
+      <input nbInput placeholder="1234567890" type="text" [(ngModel)]="contact" [ngModelOptions]="{ standalone: true }">
 
-      <label>The minimum score for an alert to be triggered.</label>
+      <label nbTooltip="Enter the value at which an alert should be triggered when a number is smaller than that value." nbTooltipPlacement="top" nbButton status="basic">Sentiment Score less than: (optional)</label>
       <input nbInput type="number" [(ngModel)]="scoregt" [ngModelOptions]="{ standalone: true }">
 
-      <label>The maximum score for an alert to be triggered.</label>
+      <label nbTooltip="Enter the value at which an alert should be triggered when a number is greater than that value." nbTooltipPlacement="top" nbButton status="basic">Sentiment Score greater than: (optional)</label>
       <input nbInput type="number" [(ngModel)]="scorelt" [ngModelOptions]="{ standalone: true }">
 
     </form>
   </nb-card-body>
-  <nb-card-footer>
-    <button nbButton status="primary" (click)="submit()">Submit</button>
+  <nb-card-footer class="d-flex justify-content-between">
+    <button nbButton status="primary" (click)="submit()" [nbPopover]="templateRef">Submit</button>
+    <ng-template #templateRef [ngIf]="">
+      <span>Please fill the required fields.</span>
+    </ng-template>
     <button nbButton (click)="cancel()">Cancel</button>
   </nb-card-footer>
 </nb-card>
