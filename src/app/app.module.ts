@@ -75,7 +75,7 @@ import { SnscrapeDisplayComponent } from './result-page/snscrape-display/snscrap
     NbToastrModule.forRoot(),
     NbTooltipModule,
     NbEvaIconsModule,
-    NbIconModule
+    NbIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

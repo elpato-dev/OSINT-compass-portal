@@ -1,0 +1,44 @@
+$font-size: 16px;
+$padding: 10px;
+
+// Define a mixin for applying ellipsis
+@mixin ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Apply styles to the list and table elements
+ul, table {
+  display: block;
+  width: 100%;
+
+  li, tr {
+    display: block;
+    width: 100%;
+    padding: $padding;
+    font-size: $font-size;
+
+    // Apply ellipsis to the text
+    @include ellipsis;
+
+    // Define styles for larger screens
+    @media only screen and (min-width: 768px) {
+      display: table-row;
+
+      td {
+        display: table-cell;
+        padding: $padding;
+      }
+    }
+  }
+}
+
+// Define styles for smaller screens
+@media only screen and (max-width: 767px) {
+  ul, table {
+    li, tr {
+      font-size: $font-size - 2px;
+    }
+  }
+}
