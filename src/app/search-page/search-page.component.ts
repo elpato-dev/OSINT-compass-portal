@@ -11,7 +11,7 @@ import {debounceTime, distinctUntilChanged, Subject, switchMap} from "rxjs";
 
 
 export class SearchPageComponent implements OnInit {
-  @Output() startSearch: EventEmitter<{ term: string, endpoint: string }> = new EventEmitter<{ term: string, endpoint: string }>();
+  @Output() startSearch: EventEmitter<{ term: string, endpoint: string, display: string }> = new EventEmitter<{ term: string, endpoint: string, display: string }>();
 
   searchQuery = '';
   suggestions: any;
@@ -22,7 +22,8 @@ export class SearchPageComponent implements OnInit {
   categories: string[] = [
     "Term",
     "E-Mail",
-    "Domain"
+    "Domain",
+    "snscrape"
   ];
 
   constructor(private bingAutosuggestService: BingAutosuggestService) {
@@ -54,12 +55,14 @@ export class SearchPageComponent implements OnInit {
     }
 
     let endpoint = "";
+    let display = "";
       switch (this.selectedCategory) {
-        case "Term" : endpoint = "term"; break;
-        case "E-Mail" : endpoint = "email"; break;
-        case "Domain" : endpoint = "domain"; break;
+        case "Term" : endpoint = "term"; display = "term"; break;
+        case "E-Mail" : endpoint = "email"; display = "recursive"; break;
+        case "Domain" : endpoint = "domain"; display = "recursive"; break;
+        case "snscrape" : endpoint = "snscrape"; display = "snscrape"; break;
       }
-    this.startSearch.emit({term: this.searchQuery, endpoint:  endpoint});
+    this.startSearch.emit({term: this.searchQuery, endpoint:  endpoint, display: display});
   }
   async onInput(event: Event) {
     const target = event.target as HTMLInputElement;

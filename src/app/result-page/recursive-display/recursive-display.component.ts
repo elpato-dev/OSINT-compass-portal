@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./recursive-display.component.scss']
 })
 export class RecursiveDisplayComponent {
-  @Input() data: any;
+  @Input() resultData: any;
 
   isArray(value: any): boolean {
     return Array.isArray(value);

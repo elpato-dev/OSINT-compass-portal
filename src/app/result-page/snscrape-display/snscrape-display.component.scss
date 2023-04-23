@@ -1,0 +1,19 @@
+.result-panel {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 280px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.result-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  justify-content: center;
+}
+
+nb-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}

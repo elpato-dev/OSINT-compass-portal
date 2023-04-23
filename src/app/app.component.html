@@ -16,7 +16,7 @@
             <app-search-page (startSearch)="onSearchStart($event)" [nbSpinner]="isLoading" nbSpinnerStatus="danger"></app-search-page>
           </nb-card-body>
           <nb-card-body>
-            <app-result-page [data]="data"></app-result-page>
+            <app-result-page [resultData]="resultData" [searchData]="searchData"></app-result-page>
           </nb-card-body>
         </nb-card>
       </nb-layout-column>

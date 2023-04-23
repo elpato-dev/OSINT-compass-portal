@@ -1,0 +1,20 @@
+<div *ngIf="isArray(resultData)">
+  <ul>
+    <li *ngFor="let item of resultData">
+      <app-recursive-display [resultData]="item"></app-recursive-display>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="isObject(resultData)">
+  <table>
+    <tr *ngFor="let key of getKeys(resultData)">
+      <td>{{ key | clickableUrl}}:</td>
+      <td>
+        <app-recursive-display [resultData]="resultData[key]"></app-recursive-display>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div *ngIf="!isArray(resultData) && !isObject(resultData)" [innerHTML]="resultData | clickableUrl"></div>

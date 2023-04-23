@@ -14,7 +14,8 @@ export class AppComponent implements OnInit{
 
   isDarkTheme = false;
 
-  data: any;
+  searchData: any;
+  resultData: any;
   isLoading: any;
   constructor( private compassAPIService : CompassAPIService,
                private themeService: NbThemeService,
@@ -23,16 +24,29 @@ export class AppComponent implements OnInit{
 
   }
 
-  onSearchStart(event: { term: string, endpoint: string }) {
+  onSearchStart(event: { term: string, endpoint: string, display: string}) {
     this.isLoading = true;
+
+    this.searchData = {
+      endpoint: event.endpoint,
+      term: event.term,
+      display: event.display
+    }
+
     this.compassAPIService.getEndpointData(event.term, event.endpoint).subscribe({
       next: data => {
-        this.data=data;
+        this.resultData=data;
         console.log('Endpoint data:', data);
         this.isLoading = false;
         },
-      error: error => console.error('Error fetching Endpoint data:', error),
-      complete: () => console.log('Endpoint data fetching completed')
+      error: error => {
+        console.error('Error fetching Endpoint data:', error);
+        this.isLoading = false;
+      },
+      complete: () => {
+        console.log('Endpoint data fetching completed');
+        this.isLoading = false;
+      }
     });
   }
 

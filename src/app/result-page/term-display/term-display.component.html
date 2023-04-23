@@ -1,0 +1,96 @@
+<!------   Term     ------->
+<div class="result-container">
+  <nb-accordion class="word-frequency">
+    <nb-accordion-item>
+      <nb-accordion-item-header>Word frequency</nb-accordion-item-header>
+      <nb-accordion-item-body>
+        <table>
+          <thead>
+          <tr>
+            <th>Word</th>
+            <th>Count</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let word of resultData.common_words">
+            <td>{{ word[0] }}</td>
+            <td>{{ word[1] }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </nb-accordion-item-body>
+    </nb-accordion-item>
+  </nb-accordion>
+</div>
+<div class="result-container">
+  <nb-card class="result-panel">
+    <nb-card-header>
+      <h3>News:</h3>
+      <div>
+        Sentiment:
+        <span [innerHTML]='resultData.news.sentiment | prettySentiment'></span>
+        (<span [innerHTML]="resultData.news.sentiment | number: '1.0-2'"></span>)
+        <span *ngIf="resultData.news.sentiment < -0.1">
+          <nb-icon icon="trending-down-outline" status="warning"></nb-icon>
+        </span>
+        <span *ngIf="resultData.news.sentiment > 0.1">
+          <nb-icon icon="trending-up-outline" status="success"></nb-icon>
+        </span>
+        <span *ngIf="resultData.news.sentiment < 0.1 && resultData.news.sentiment > -0.1">
+          <nb-icon icon="arrow-forward-outline" status="basic"></nb-icon>
+        </span>
+      </div>
+    </nb-card-header>
+    <nb-card-body>
+      <nb-card *ngFor="let article of resultData.news.articles">
+        <nb-card-header>
+          <a [href]="article.url" target="_blank">{{ article.title }}</a>
+        </nb-card-header>
+        <nb-card-body>
+          <p>{{ article.content }}</p>
+          <p><b>Source:</b> {{ article.source }}</p>
+        </nb-card-body>
+      </nb-card>
+    </nb-card-body>
+  </nb-card>
+  <nb-card class="result-panel">
+    <nb-card-header>
+      <h3>Tweets:</h3>
+      <div>
+        Sentiment:
+        <span [innerHTML]='resultData.tweets.sentiment | prettySentiment'></span>
+        (<span [innerHTML]="resultData.tweets.sentiment | number: '1.0-2'"></span>)
+        <span *ngIf="resultData.tweets.sentiment < -0.1">
+          <nb-icon icon="trending-down-outline" status="warning"></nb-icon>
+        </span>
+        <span *ngIf="resultData.tweets.sentiment > 0.1">
+          <nb-icon icon="trending-up-outline" status="success"></nb-icon>
+        </span>
+        <span *ngIf="resultData.tweets.sentiment < 0.1 && resultData.tweets.sentiment > -0.1">
+          <nb-icon icon="arrow-forward-outline" status="basic"></nb-icon>
+        </span>
+      </div>
+    </nb-card-header>
+    <nb-card-body>
+      <nb-card *ngFor="let tweet of resultData.tweets.tweets_text">
+        <nb-card-body>
+          <p>{{ tweet }}</p>
+        </nb-card-body>
+      </nb-card>
+    </nb-card-body>
+  </nb-card>
+  <nb-card class="result-panel">
+    <nb-card-header>
+      <h3>Wikipedia:</h3>
+    </nb-card-header>
+    <nb-card-body>
+      <ng-container *ngIf="resultData.wikipedia">
+        <nb-card *ngFor="let article of resultData.wikipedia">
+          <nb-card-header>
+            <a [href]="article.url" target="_blank">{{ article.title }}</a>
+          </nb-card-header>
+        </nb-card>
+      </ng-container>
+    </nb-card-body>
+  </nb-card>
+</div>

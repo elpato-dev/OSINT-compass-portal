@@ -1,0 +1,46 @@
+<!------ snscrape ------->
+<div class="result-container">
+  <nb-card class="result-panel" *ngFor="let result of resultData.sources">
+    <nb-card-header>
+      <h3>{{ result.title }}</h3>
+      <div>
+        Sentiment:
+        <span [innerHTML]='result.sentiment | prettySentiment'></span>
+        (<span [innerHTML]="result.sentiment | number: '1.0-2'"></span>)
+        <span *ngIf="result.sentiment < -0.1">
+          <nb-icon icon="trending-down-outline" status="warning"></nb-icon>
+        </span>
+        <span *ngIf="result.sentiment > 0.1">
+          <nb-icon icon="trending-up-outline" status="success"></nb-icon>
+        </span>
+        <span *ngIf="result.sentiment < 0.1 && result.sentiment > -0.1">
+          <nb-icon icon="arrow-forward-outline" status="basic"></nb-icon>
+        </span>
+      </div>
+    </nb-card-header>
+    <nb-card-body>
+      <ng-container *ngIf="result.content">
+        <div *ngIf="result.title == 'reddit'">
+          <nb-card *ngFor="let post of result.content">
+            <nb-card-header>
+              <span>
+                <a href='{{ post["url"] }}' target="_blank">
+                  ID: {{ post["id"] }}
+                </a>
+              </span>
+              <span>Title: {{ post["title"] }}</span>
+            </nb-card-header>
+            <nb-card-body>
+              <p>{{ post["body"] }}</p>
+              <div *ngIf="post['link']">
+              </div>
+            </nb-card-body>
+            <nb-card-footer>
+              Posted by {{ post["author"] }} on {{ post["created"] }}
+            </nb-card-footer>
+          </nb-card>
+        </div>
+      </ng-container>
+    </nb-card-body>
+  </nb-card>
+</div>

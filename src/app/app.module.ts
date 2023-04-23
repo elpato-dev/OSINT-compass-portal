@@ -28,21 +28,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { SearchPageComponent } from './search-page/search-page.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import { ResultPageComponent } from './result-page/result-page.component';
-import { RecursiveDisplayComponent } from './recursive-display/recursive-display.component';
+import { TermDisplayComponent } from './result-page/term-display/term-display.component';
+import { RecursiveDisplayComponent } from './result-page/recursive-display/recursive-display.component';
 import { AlertSubscribeComponent } from './alert-subscribe/alert-subscribe.component';
 import { ClickableUrlPipe } from '../pipes/clickableUrl/clickable-url.pipe';
 import { PrettySentimentPipe } from '../pipes/prettySentiment/pretty-sentiment.pipe';
+import { ResultPageComponent } from './result-page/result-page.component';
+import { SnscrapeDisplayComponent } from './result-page/snscrape-display/snscrape-display.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchPageComponent,
-    ResultPageComponent,
+    TermDisplayComponent,
     RecursiveDisplayComponent,
     AlertSubscribeComponent,
     ClickableUrlPipe,
-    PrettySentimentPipe
+    PrettySentimentPipe,
+    ResultPageComponent,
+    SnscrapeDisplayComponent
   ],
   imports: [
     BrowserModule,

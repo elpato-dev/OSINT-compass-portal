@@ -1,6 +1,7 @@
 import {Component, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {NbDialogRef, NbDialogService, NbThemeService} from "@nebular/theme";
 import {CompassAPIService} from "../../services/compassapi/compass-api.service";
+import {FormControl, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-alert-subscribe',
@@ -23,6 +24,16 @@ export class AlertSubscribeComponent {
   requiredMissing(): boolean {
     return (this.term == ''|| this.channel == '' || this.contact == '');
   }
+
+  checkNumberInput(eventTarget: any) {
+    const inputElement = eventTarget as HTMLInputElement;
+    if (Number(inputElement.value) < -1) {
+      inputElement.value = inputElement.min;
+    } else if (Number(inputElement.value) > 1) {
+      inputElement.value = inputElement.max;
+    }
+  }
+
 
   submit() {
     if(this.requiredMissing()){

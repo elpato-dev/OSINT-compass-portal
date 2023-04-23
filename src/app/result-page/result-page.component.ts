@@ -6,8 +6,12 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./result-page.component.scss']
 })
 export class ResultPageComponent {
-  @Input() data: any;
+  @Input() resultData: any;
+  @Input() searchData: {
+    term: string;
+    endpoint: string;
+    display: string;
+  } | undefined;
 
   protected readonly Object = Object;
-
 }

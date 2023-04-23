@@ -49,7 +49,17 @@ export class CompassAPIService {
   }
 
   getEndpointData(term: String, endpoint: String): Observable<any> {
-    const url = this.baseURL + '/' + endpoint + '?' + endpoint + '=' + term + '&apikey=' + this.apikey;
+    let url = '';
+    let positions = NbGlobalPhysicalPosition;
+
+    switch (endpoint) {
+      case "snscrape" :
+        url = this.baseURL + '/' + endpoint + '?term=' + term + '&entries=10&reddit=true&apikey=' + this.apikey;
+        break;
+      default :
+        url = this.baseURL + '/' + endpoint + '?' + endpoint + '=' + term + '&apikey=' + this.apikey;
+        break;
+    }
 
     return this.http.get<any>(url).pipe(
       map(data => {
@@ -58,6 +68,7 @@ export class CompassAPIService {
       }),
       catchError((error: any) => {
         console.error('There was an error!',  error.code + error.message);
+        this.showToast(positions.TOP_RIGHT, 'warning',  error.message);
         return throwError(error);
       })
     );
