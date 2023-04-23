@@ -13,13 +13,16 @@ export class CompassAPIService {
   constructor(private http: HttpClient,
               private toastrService: NbToastrService) { };
 
+  baseURL = 'https://osint-compass-api.onrender.com';
+  apikey = 'mysuperkey';
+
   private index: number = 0;
 
   @HostBinding('class')
   classes = 'example-items-rows';
 
   registerAlert(term: String, channel: String, contact: String, scoregt: any, scorelt: any) {
-    const url = environment.baseURL + '/alert?apikey=' + environment.apikey;
+    const url = this.baseURL + '/alert?apikey=' + this.apikey;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
@@ -46,7 +49,7 @@ export class CompassAPIService {
   }
 
   getEndpointData(term: String, endpoint: String): Observable<any> {
-    const url = environment.baseURL + '/' + endpoint + '?' + endpoint + '=' + term + '&apikey=' + environment.apikey;
+    const url = this.baseURL + '/' + endpoint + '?' + endpoint + '=' + term + '&apikey=' + this.apikey;
 
     return this.http.get<any>(url).pipe(
       map(data => {

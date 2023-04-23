@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
   bing_secret : '',
-  baseURL : '',
-  apikey : ''
+  baseURL : 'https://osint-compass-api.onrender.com',
+  apikey : 'mysuperkey'
 };

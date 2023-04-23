@@ -32,6 +32,7 @@ import { ResultPageComponent } from './result-page/result-page.component';
 import { RecursiveDisplayComponent } from './recursive-display/recursive-display.component';
 import { AlertSubscribeComponent } from './alert-subscribe/alert-subscribe.component';
 import { ClickableUrlPipe } from '../pipes/clickableUrl/clickable-url.pipe';
+import { PrettySentimentPipe } from '../pipes/prettySentiment/pretty-sentiment.pipe';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ClickableUrlPipe } from '../pipes/clickableUrl/clickable-url.pipe';
     ResultPageComponent,
     RecursiveDisplayComponent,
     AlertSubscribeComponent,
-    ClickableUrlPipe
+    ClickableUrlPipe,
+    PrettySentimentPipe
   ],
   imports: [
     BrowserModule,
@@ -67,7 +69,9 @@ import { ClickableUrlPipe } from '../pipes/clickableUrl/clickable-url.pipe';
     NbButtonModule,
     NbDialogModule.forRoot(),
     NbToastrModule.forRoot(),
-    NbTooltipModule
+    NbTooltipModule,
+    NbEvaIconsModule,
+    NbIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

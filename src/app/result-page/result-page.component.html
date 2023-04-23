@@ -1,6 +1,6 @@
 <!------   Term     ------->
 <div *ngIf="data && data.news && data.news.articles" class="result-container">
-  <nb-accordion>
+  <nb-accordion class="word-frequency">
     <nb-accordion-item>
       <nb-accordion-item-header>Word frequency</nb-accordion-item-header>
       <nb-accordion-item-body>
@@ -26,7 +26,20 @@
   <nb-card class="result-panel">
     <nb-card-header>
       <h3>News:</h3>
-      <h4>Sentiment: {{data.news.sentiment}}</h4>
+      <div>
+        Sentiment:
+        <span [innerHTML]='data.news.sentiment | prettySentiment'></span>
+        (<span [innerHTML]="data.news.sentiment | number: '1.0-2'"></span>)
+        <span *ngIf="data.news.sentiment < -0.1">
+          <nb-icon icon="trending-down-outline" status="warning"></nb-icon>
+        </span>
+        <span *ngIf="data.news.sentiment > 0.1">
+          <nb-icon icon="trending-up-outline" status="success"></nb-icon>
+        </span>
+        <span *ngIf="data.news.sentiment < 0.1 && data.news.sentiment > -0.1">
+          <nb-icon icon="arrow-forward-outline" status="basic"></nb-icon>
+        </span>
+      </div>
     </nb-card-header>
     <nb-card-body>
       <nb-card *ngFor="let article of data.news.articles">
@@ -43,7 +56,20 @@
   <nb-card class="result-panel">
     <nb-card-header>
       <h3>Tweets:</h3>
-      <h4>Sentiment: {{data.tweets.sentiment}}</h4>
+      <div>
+        Sentiment:
+        <span [innerHTML]='data.tweets.sentiment | prettySentiment'></span>
+        (<span [innerHTML]="data.tweets.sentiment | number: '1.0-2'"></span>)
+        <span *ngIf="data.tweets.sentiment < -0.1">
+          <nb-icon icon="trending-down-outline" status="warning"></nb-icon>
+        </span>
+        <span *ngIf="data.tweets.sentiment > 0.1">
+          <nb-icon icon="trending-up-outline" status="success"></nb-icon>
+        </span>
+        <span *ngIf="data.tweets.sentiment < 0.1 && data.tweets.sentiment > -0.1">
+          <nb-icon icon="arrow-forward-outline" status="basic"></nb-icon>
+        </span>
+      </div>
     </nb-card-header>
     <nb-card-body>
       <nb-card *ngFor="let tweet of data.tweets.tweets_text">

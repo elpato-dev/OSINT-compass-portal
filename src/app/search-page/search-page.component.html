@@ -2,7 +2,6 @@
   <h2>
     Time to unveil the hidden and master the web.
   </h2>
-
   <nb-card-body class="search-container">
     <nb-form-field>
       <nb-icon nbPrefix icon="search-outline"></nb-icon>
@@ -10,6 +9,7 @@
              (input)="onInput($event)"
              [(ngModel)]="searchQuery"
              [nbAutocomplete]="auto"
+             (keydown.enter)="onSearchClick()"
       />
       <nb-autocomplete #auto [activeFirst]="true">
         <nb-option *ngFor="let option of suggestions" [value]="option.displayText">
