@@ -6,9 +6,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class ClickableUrlPipe implements PipeTransform {
 
   transform(value: string): string {
-
     const urlRegex = /(https?:\/\/[^\s]+)/g;
-    return value.replace(urlRegex, '<a href="$1" target="_blank">$1</a>');
+    return value.toString().replace(urlRegex, '<a href="$1" target="_blank">$1</a>');
   }
 
 }

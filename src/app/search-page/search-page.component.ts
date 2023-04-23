@@ -49,11 +49,10 @@ export class SearchPageComponent implements OnInit {
     console.log('Selected Category:', this.selectedCategory);
   }
   onSearchClick() {
-    if(this.selectedCategory == undefined) {
+    if(this.selectedCategory == undefined || this.searchQuery == '') {
       return;
     }
 
-    console.warn(this.selectedCategory);
     let endpoint = "";
       switch (this.selectedCategory) {
         case "Term" : endpoint = "term"; break;
